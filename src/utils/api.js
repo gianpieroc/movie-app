@@ -10,8 +10,9 @@ const axiosInstance = axios.create({
 export const getMoviesApi = () =>
   axiosInstance.get("/discover/movie?sort_by=popularity.desc", { params });
 
-export const searchMovieApi = query =>
-  axiosInstance.get("/search", {}, { params, query });
+export const searchMovieApi = query => {
+  return axiosInstance.get("/search/movie", { params: { ...params, query } });
+};
 
 export const getMovieByIdApi = query =>
-  axiosInstance.get("/find", {}, { params, query });
+  axiosInstance.get("/movie/" + query, { params });

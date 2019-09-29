@@ -5,7 +5,7 @@ const initialState = {
   error: null,
   movieList: [],
   searchMoviesHistory: [],
-  movieSelected: {}
+  movieSelected: null
 };
 
 export default (state = initialState, action) => {
