@@ -15,6 +15,10 @@ const Container = styled.div`
   margin: 30px auto;
   justify-content: flex-start;
   align-items: center;
+  * {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    text-decoration: none;
+  }
 `;
 
 const App = () => (

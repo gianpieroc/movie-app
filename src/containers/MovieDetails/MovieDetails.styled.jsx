@@ -14,6 +14,15 @@ export const MovieDetailsContent = styled.div`
   align-items: flex-start;
 `;
 
+export const MovieDetailsButton = styled.button`
+  background: transparent;
+  color: blue;
+  border-width: 0;
+  outline: none;
+  font-size: 25px;
+  align-self: flex-start;
+`;
+
 export const MovieDetailsRow = styled.div`
   display: flex;
   flex-direction: row;

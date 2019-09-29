@@ -8,7 +8,8 @@ import {
   MovieDetailsTitle,
   MovieDetailsDescription,
   MovieDetailsContent,
-  MovieDetailsRow
+  MovieDetailsRow,
+  MovieDetailsButton
 } from "./MovieDetails.styled";
 import { TMD_IMG_URL } from "../../constants";
 import Label from "../../components/Label/Label";
@@ -18,7 +19,8 @@ const MovieDetails = ({
   movie,
   match: {
     params: { movieId }
-  }
+  },
+  history: { goBack }
 }) => {
   useEffect(() => {
     getMovie(movieId);
@@ -28,10 +30,17 @@ const MovieDetails = ({
     return null;
   }
 
+  const back = () => {
+    goBack();
+  };
+
   const { poster_path, title, genres, status, vote_average, overview } = movie;
 
   return (
     <MovieDetailsContainer>
+      <MovieDetailsButton data-testid="go-back-button" onClick={back}>
+        ☇ Go Back
+      </MovieDetailsButton>
       <MovieDetailsImage src={TMD_IMG_URL + poster_path} />
       <MovieDetailsContent>
         <MovieDetailsTitle>{title}</MovieDetailsTitle>

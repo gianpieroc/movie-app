@@ -15,6 +15,7 @@ export default (state = initialState, action) => {
     case ActionTypes.START_GET_MOVIES:
       return {
         ...state,
+        searchMoviesHistory: [],
         isLoading: true
       };
     case ActionTypes.FAIL_SEARCH_MOVIE:
