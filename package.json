@@ -17,7 +17,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "coverage": "react-scripts test -- --coverage",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -31,17 +30,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "jest": {
-    "collectCoverageFrom": ["!<rootDir>/src/utils/test-renderer.js"],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    }
   },
   "devDependencies": {
     "@testing-library/dom": "6.4.1",

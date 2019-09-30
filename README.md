@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Instructions
 
+Demo: https://laughing-albattani-1ed6f6.netlify.com
+
 To run the project, simply execute this command:
 `npm install && npm start`
 
@@ -19,6 +21,6 @@ Runs the app in the development mode.<br>
 
 Launches the test runner in the interactive watch mode.<br>
 
-### `npm coverage`
+### `npm run test -- --coverage`
 
 Check app coverage.<br>
