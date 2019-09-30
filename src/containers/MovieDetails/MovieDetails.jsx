@@ -34,10 +34,18 @@ const MovieDetails = ({
     goBack();
   };
 
-  const { poster_path, title, genres, status, vote_average, overview } = movie;
+  const {
+    poster_path,
+    title,
+    genres,
+    status,
+    vote_average,
+    overview,
+    id
+  } = movie;
 
   return (
-    <MovieDetailsContainer>
+    <MovieDetailsContainer data-testid={"movie-details-" + id}>
       <MovieDetailsButton data-testid="go-back-button" onClick={back}>
         ☇ Go Back
       </MovieDetailsButton>
@@ -45,7 +53,8 @@ const MovieDetails = ({
       <MovieDetailsContent>
         <MovieDetailsTitle>{title}</MovieDetailsTitle>
         <MovieDetailsRow>
-          {genres && genres.map(({ name }) => <Label>{name}</Label>)}
+          {genres &&
+            genres.map(({ name, id }) => <Label key={id}>{name}</Label>)}
         </MovieDetailsRow>
         <MovieDetailsDescription>{status}</MovieDetailsDescription>
         <MovieDetailsDescription>☆ {vote_average}</MovieDetailsDescription>

@@ -24,7 +24,7 @@ const css = `
 
 const Spinner = ({ isLoading }) =>
   isLoading && (
-    <SpinnerContainer>
+    <SpinnerContainer data-testid="spinner-container">
       <BounceLoader
         css={css}
         sizeUnit={"px"}

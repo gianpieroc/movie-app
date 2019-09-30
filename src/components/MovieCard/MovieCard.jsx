@@ -4,7 +4,7 @@ import { MovieCardContainer, MovieCardImage } from "./MovieCard.styled";
 import { TMD_IMG_URL } from "../../constants";
 
 const MovieCard = ({ movie }) => (
-  <Link to={"/movie/" + movie.id}>
+  <Link data-testid={movie.id} to={"/movie/" + movie.id}>
     <MovieCardContainer>
       <MovieCardImage src={TMD_IMG_URL + movie.poster_path} />
       <h1>{movie.title}</h1>

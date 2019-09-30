@@ -2,7 +2,7 @@ import React from "react";
 import configureStore from "../redux/store";
 import { Provider } from "react-redux";
 import { render } from "@testing-library/react";
-import { Router } from "react-router-dom";
+import App from "../containers/App";
 import { createMemoryHistory } from "history";
 
 export const renderWithRedux = ui => {
@@ -21,9 +21,9 @@ export const renderWithRouterAndRedux = (
     history = createMemoryHistory({ initialEntries: [route] })
   } = {}
 ) => {
-  const Wrapper = ({ children }) => (
+  const Wrapper = () => (
     <Provider store={store}>
-      <Router history={history}>{children}</Router>
+      <App history={history} />
     </Provider>
   );
   return {
