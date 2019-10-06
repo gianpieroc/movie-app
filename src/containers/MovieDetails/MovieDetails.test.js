@@ -1,22 +1,23 @@
 import React from "react";
-import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { waitForElement, cleanup } from "@testing-library/react";
+import { axiosInstance } from "../../utils/api";
 import { createMemoryHistory } from "history";
 
 import { renderWithRedux } from "../../utils/test-renderer.js";
 import MovieDetails from "./MovieDetails.jsx";
-
 import movieMocked from "../../utils/__mocks__/movie";
 
-var mock = new MockAdapter(axios);
+const mock = new MockAdapter(axiosInstance);
 
 describe("MovieDetails Container", () => {
   afterEach(cleanup);
   it("can render movie details", async () => {
-    mock.onGet("/find/429617").reply(200, movieMocked);
-
+    // GIVEN
+    mock.onGet("/movie/429617").reply(200, movieMocked);
     const history = createMemoryHistory();
+
+    // WHEN
     const { getByText, getByTestId } = renderWithRedux(
       <MovieDetails
         match={{ params: { movieId: "429617" } }}
@@ -26,6 +27,8 @@ describe("MovieDetails Container", () => {
         route: "/movie/429617"
       }
     );
+
+    // THEN
     await waitForElement(() => getByText("Spider-Man: Far from Home"));
     expect(getByTestId("go-back-button")).toBeDefined();
     expect(getByTestId("movie-details-429617")).toBeDefined();

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const params = { api_key: process.env.REACT_APP_MOVIE_DB_KEY };
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: "https://api.themoviedb.org/3",
   timeout: 1000
 });
