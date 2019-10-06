@@ -19,7 +19,6 @@ export function* getMovies() {
 
     yield put(successGetMovies(response.data.results));
   } catch (e) {
-    console.log(e);
     yield put(failGetMovies(e));
   }
 }
@@ -35,14 +34,12 @@ export function* getMovieById({ payload }) {
 
     yield put(successGetMovieById(response.data));
   } catch (e) {
-    console.log(e);
     yield put(failGetMovieById(e));
   }
 }
 
 export function* searchMovie({ payload }) {
   try {
-    yield delay(300);
     const query = payload;
     const response = yield call(searchMovieApi, query);
 
@@ -52,7 +49,6 @@ export function* searchMovie({ payload }) {
 
     yield put(successSearchMovie(response.data.results));
   } catch (e) {
-    console.log(e);
     yield put(failSearchMovie(e));
   }
 }

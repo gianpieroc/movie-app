@@ -10,7 +10,10 @@ import App from "../App.jsx";
 const mock = new MockAdapter(axiosInstance);
 
 describe("App Container", () => {
+  beforeEach(mock.reset);
+
   afterEach(cleanup);
+
   it("can render empty Home", () => {
     // WHEN
     const { getByText } = renderWithRedux(<App />);

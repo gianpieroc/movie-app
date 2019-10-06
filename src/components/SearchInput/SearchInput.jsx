@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {
   InputStyled,
@@ -8,14 +8,14 @@ import {
   SearchBoxItem,
   SearchBoxLink
 } from "./SearchInput.styled";
-import { startSearchMovie } from "../../redux/actions";
-import { searchMoviesSelector } from "../../redux/selectors";
+import {startSearchMovie} from "../../redux/actions";
+import {searchMoviesSelector} from "../../redux/selectors";
 
-const SearchInput = ({ searchItem, searchMoviesHistory }) => {
+const SearchInput = ({searchItem, searchMoviesHistory}) => {
   const [inputValue, setInputValue] = React.useState("");
 
   const onChangeSearch = e => {
-    const { value } = e.target;
+    const {value} = e.target;
     setInputValue(value);
     searchItem(value);
   };
@@ -24,6 +24,7 @@ const SearchInput = ({ searchItem, searchMoviesHistory }) => {
     <InputContainer>
       <InputStyled
         placeholder="🔎search"
+        aria-label="search-input"
         value={inputValue}
         onChange={onChangeSearch}
       />
@@ -32,14 +33,15 @@ const SearchInput = ({ searchItem, searchMoviesHistory }) => {
           searchMoviesHistory.length > 0 &&
           searchMoviesHistory.slice(0, 6).map(movie => (
             <SearchBoxLink key={movie.id} to={"/movie/" + movie.id}>
-              <SearchBoxItem>{movie.title}</SearchBoxItem>
+              <SearchBoxItem>{`${movie.title} (${new Date(
+                movie.release_date
+              ).getFullYear()})`}</SearchBoxItem>
             </SearchBoxLink>
           ))}
       </SearchBoxContainer>
     </InputContainer>
   );
 };
-
 SearchInput.propTypes = {
   searchItem: PropTypes.func,
   searchMoviesHistory: PropTypes.arrayOf(PropTypes.shape({}))
@@ -48,11 +50,9 @@ SearchInput.propTypes = {
 const mapStateToProps = state => ({
   searchMoviesHistory: searchMoviesSelector(state)
 });
-
 const mapDispatchToProps = dispatch => ({
   searchItem: text => dispatch(startSearchMovie(text))
 });
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps

@@ -21,6 +21,6 @@ Runs the app in the development mode.<br>
 
 Launches the test runner in the interactive watch mode.<br>
 
-### `npm run test -- --coverage`
+### `npm run coverage`
 
 Check app coverage.<br>

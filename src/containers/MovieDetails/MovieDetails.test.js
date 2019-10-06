@@ -11,7 +11,10 @@ import movieMocked from "../../utils/__mocks__/movie";
 const mock = new MockAdapter(axiosInstance);
 
 describe("MovieDetails Container", () => {
+  beforeEach(mock.reset);
+
   afterEach(cleanup);
+
   it("can render movie details", async () => {
     // GIVEN
     mock.onGet("/movie/429617").reply(200, movieMocked);
