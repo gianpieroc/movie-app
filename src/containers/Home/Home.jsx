@@ -1,17 +1,12 @@
-import React, { useEffect, Fragment } from "react";
-import styled from "styled-components";
-import { connect } from "react-redux";
-import { startGetMovies } from "../../redux/actions";
-import { moviesSelector } from "../../redux/selectors";
+import React, {useEffect, Fragment} from "react";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {startGetMovies} from "../../redux/actions";
+import {moviesSelector} from "../../redux/selectors";
 import MovieCard from "../../components/MovieCard";
+import {HomeContainer} from "./Home.styled";
 
-const HomeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
-const Home = ({ getMovies, movies }) => {
+const Home = ({getMovies, movies}) => {
   useEffect(() => {
     getMovies();
   }, [getMovies]);
@@ -26,6 +21,11 @@ const Home = ({ getMovies, movies }) => {
       </HomeContainer>
     </Fragment>
   );
+};
+
+Home.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.shape({})),
+  getMovies: PropTypes.func
 };
 
 const mapStateToProps = state => ({

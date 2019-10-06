@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import {
   InputStyled,
   InputContainer,
@@ -37,6 +38,11 @@ const SearchInput = ({ searchItem, searchMoviesHistory }) => {
       </SearchBoxContainer>
     </InputContainer>
   );
+};
+
+SearchInput.propTypes = {
+  searchItem: PropTypes.func,
+  searchMoviesHistory: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 const mapStateToProps = state => ({
