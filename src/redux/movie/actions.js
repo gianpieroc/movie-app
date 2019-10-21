@@ -1,4 +1,4 @@
-import * as ActionTypes from "./actionTypes";
+import * as ActionTypes from "../actionTypes";
 
 export const startSearchMovie = payload => ({
   type: ActionTypes.START_SEARCH_MOVIE,

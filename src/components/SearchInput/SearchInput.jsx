@@ -1,5 +1,5 @@
-import React from "react";
-import {connect} from "react-redux";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
   InputStyled,
@@ -8,16 +8,22 @@ import {
   SearchBoxItem,
   SearchBoxLink
 } from "./SearchInput.styled";
-import {startSearchMovie} from "../../redux/actions";
-import {searchMoviesSelector} from "../../redux/selectors";
+import { startSearchMovie } from "../../redux/movie/actions";
+import { searchMoviesSelector } from "../../redux/movie/selectors";
 
-const SearchInput = ({searchItem, searchMoviesHistory}) => {
+const SEARCH_ITEMS_LIMIT = 6;
+const SEARCH_ITEMS_CHARS_LIMIT = 2;
+
+const SearchInput = ({ searchItem, searchMoviesHistory }) => {
   const [inputValue, setInputValue] = React.useState("");
+  useEffect(() => clearTimeout(), []);
 
   const onChangeSearch = e => {
-    const {value} = e.target;
+    const { value } = e.target;
     setInputValue(value);
-    searchItem(value);
+    if (value.length > SEARCH_ITEMS_CHARS_LIMIT) {
+      searchItem(value);
+    }
   };
 
   return (
@@ -29,30 +35,46 @@ const SearchInput = ({searchItem, searchMoviesHistory}) => {
         onChange={onChangeSearch}
       />
       <SearchBoxContainer>
-        {searchMoviesHistory &&
-          searchMoviesHistory.length > 0 &&
-          searchMoviesHistory.slice(0, 6).map(movie => (
-            <SearchBoxLink key={movie.id} to={"/movie/" + movie.id}>
-              <SearchBoxItem>{`${movie.title} (${new Date(
-                movie.release_date
-              ).getFullYear()})`}</SearchBoxItem>
-            </SearchBoxLink>
-          ))}
+        {inputValue.length > SEARCH_ITEMS_CHARS_LIMIT &&
+          Array.isArray(searchMoviesHistory) &&
+          searchMoviesHistory
+            .slice(0, SEARCH_ITEMS_LIMIT)
+            .map(({ id, title, release_date }) => {
+              const date = new Date(release_date).getFullYear();
+              const releaseDate = !isNaN(date) ? `(${date})` : "";
+              const itemText = `${title} ${releaseDate}`;
+
+              return (
+                <SearchBoxLink key={id} to={"/movie/" + id}>
+                  <SearchBoxItem>{itemText}</SearchBoxItem>
+                </SearchBoxLink>
+              );
+            })}
       </SearchBoxContainer>
     </InputContainer>
   );
 };
+
 SearchInput.propTypes = {
   searchItem: PropTypes.func,
-  searchMoviesHistory: PropTypes.arrayOf(PropTypes.shape({}))
+  searchMoviesHistory: PropTypes.arrayOf(
+    PropTypes.shape({
+      poster_path: PropTypes.string,
+      title: PropTypes.string,
+      vote_average: PropTypes.number,
+      id: PropTypes.number
+    })
+  )
 };
 
 const mapStateToProps = state => ({
   searchMoviesHistory: searchMoviesSelector(state)
 });
+
 const mapDispatchToProps = dispatch => ({
   searchItem: text => dispatch(startSearchMovie(text))
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

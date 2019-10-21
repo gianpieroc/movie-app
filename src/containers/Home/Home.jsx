@@ -1,12 +1,12 @@
-import React, {useEffect, Fragment} from "react";
+import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {startGetMovies} from "../../redux/actions";
-import {moviesSelector} from "../../redux/selectors";
+import { connect } from "react-redux";
+import { startGetMovies } from "../../redux/movie/actions";
+import { moviesSelector } from "../../redux/movie/selectors";
 import MovieCard from "../../components/MovieCard";
-import {HomeContainer} from "./Home.styled";
+import { HomeContainer } from "./Home.styled";
 
-const Home = ({getMovies, movies}) => {
+const Home = ({ getMovies, movies }) => {
   useEffect(() => {
     getMovies();
   }, [getMovies]);

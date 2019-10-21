@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { isLoadingSelector } from "../../redux/selectors";
 import SearchInput from "../SearchInput";
 import { MenuContainer, MenuImage, MenuLink } from "./Menu.styled";
 
@@ -9,14 +7,12 @@ const imgSrc =
 
 const Menu = () => (
   <MenuContainer data-testid="menu-container">
-    <MenuImage src={imgSrc} alt="movie-database-logo" />
+    <MenuLink to="/">
+      <MenuImage src={imgSrc} alt="movie-database-logo" />
+    </MenuLink>
     <MenuLink to="/"> The Movie Database </MenuLink>
     <SearchInput />
   </MenuContainer>
 );
 
-const mapStateToProps = state => ({
-  isLoading: isLoadingSelector(state)
-});
-
-export default connect(mapStateToProps)(Menu);
+export default Menu;

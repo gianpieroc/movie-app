@@ -6,7 +6,7 @@ import {
   START_SEARCH_MOVIE
 } from "./actionTypes";
 
-import { getMovies, searchMovie, getMovieById } from "./movieSagas";
+import { getMovies, searchMovie, getMovieById } from "./movie/sagas";
 
 export default function* rootSaga() {
   yield all([takeLatest(START_GET_MOVIES, getMovies)]);

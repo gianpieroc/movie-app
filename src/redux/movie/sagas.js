@@ -1,4 +1,4 @@
-import { call, put, delay } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import {
   successGetMovieById,
   successGetMovies,
@@ -7,7 +7,7 @@ import {
   failGetMovies,
   failSearchMovie
 } from "./actions";
-import { getMovieByIdApi, getMoviesApi, searchMovieApi } from "../utils/api";
+import { getMovieByIdApi, getMoviesApi, searchMovieApi } from "../../utils/api";
 
 export function* getMovies() {
   try {

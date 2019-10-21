@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {BounceLoader} from "react-spinners";
-import {isLoadingSelector} from "../../redux/selectors";
-import {spinnerCss, SpinnerContainer} from "./Spinner.styled";
+import { connect } from "react-redux";
+import { BounceLoader } from "react-spinners";
+import { isLoadingSelector } from "../../redux/movie/selectors";
+import { spinnerCss, SpinnerContainer } from "./Spinner.styled";
 
-const Spinner = ({isLoading}) =>
+const Spinner = ({ isLoading }) =>
   isLoading && (
     <SpinnerContainer data-testid="spinner-container">
       <BounceLoader
