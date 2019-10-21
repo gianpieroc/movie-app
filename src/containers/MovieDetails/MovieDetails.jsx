@@ -50,9 +50,9 @@ const MovieDetails = ({
       <MovieDetailsButton data-testid="go-back-button" onClick={back}>
         ☇ Go Back
       </MovieDetailsButton>
+      <MovieDetailsTitle>{title}</MovieDetailsTitle>
       <MovieDetailsImage src={TMD_IMG_URL + poster_path} />
       <MovieDetailsContent>
-        <MovieDetailsTitle>{title}</MovieDetailsTitle>
         <MovieDetailsRow>
           {genres &&
             genres.map(({ name, id }) => <Label key={id}>{name}</Label>)}

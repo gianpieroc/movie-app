@@ -5,6 +5,7 @@ export const MovieDetailsContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
 `;
 
 export const MovieDetailsContent = styled.div`
@@ -12,6 +13,8 @@ export const MovieDetailsContent = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 50%;
+  margin: 30px 0;
 `;
 
 export const MovieDetailsButton = styled.button`
