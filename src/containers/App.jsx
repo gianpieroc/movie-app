@@ -3,7 +3,7 @@ import { Route, BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
 import Home from "./Home";
 import MovieDetails from "./MovieDetails";
-import Spinner from "../components/Spinner";
+import Spinner from "./Spinner";
 import Menu from "../components/Menu";
 
 const Container = styled.div`
