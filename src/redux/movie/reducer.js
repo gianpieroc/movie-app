@@ -11,17 +11,11 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.START_SEARCH_MOVIE:
+    case ActionTypes.START_GET_MOVIE_BY_ID:
     case ActionTypes.START_GET_MOVIES:
       return {
         ...state,
         searchMoviesHistory: [],
-        movieList: [],
-        isLoading: true
-      };
-    case ActionTypes.START_GET_MOVIE_BY_ID:
-      return {
-        ...state,
-        movieSelected: null,
         isLoading: true
       };
     case ActionTypes.FAIL_SEARCH_MOVIE:
