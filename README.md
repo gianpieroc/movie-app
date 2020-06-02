@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Instructions
 
-Demo: https://laughing-albattani-1ed6f6.netlify.com
+Demo: https://movie-db-api.netlify.app/
 
 To run the project, simply execute this command:
 `npm install && npm start`
